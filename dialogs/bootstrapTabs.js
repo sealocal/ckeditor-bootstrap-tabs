@@ -97,7 +97,7 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
 
       if ( element ) {
         ascendant = element.getAscendant( function(element) {
-          // Suddenly, getAscendant traveres up all CKEDITOR.dom.element instances to CKEDITOR.dom.document
+          // Suddenly, getAscendant traverses up all CKEDITOR.dom.element instances to CKEDITOR.dom.document
           // Return false since this indicates we have not found a tab set as an ascendant.
           if (element instanceof CKEDITOR.dom.document) {
             return false;
