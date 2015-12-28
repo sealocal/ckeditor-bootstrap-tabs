@@ -1,4 +1,5 @@
 ﻿CKEDITOR.plugins.setLang( 'bootstrapTabs', 'en', {
-	title: 'Bootstrap Tabs',
-	invalidTabs: 'Number of Tabs field cannot be empty.'
+  dialogTitle: 'Bootstrap Tabs',
+  invalidTabSetTitle: 'Title field cannot be empty.',
+  invalidNumberOfTabs: 'Number of Tabs field cannot be empty.'
 });
