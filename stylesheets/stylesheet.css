@@ -39,6 +39,11 @@ ol, ul {
   list-style: none;
 }
 
+li {
+  padding: 10px 0 10px 5px;
+  font-size: 1.4em;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
