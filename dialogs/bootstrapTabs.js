@@ -4,7 +4,7 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
     // Basic properties of the dialog window: title, minimum size.
 
     // dialog window title
-    title: 'Bootstrap Tabs',
+    title: editor.lang.bootstrapTabs.dialogTitle,
     // dialog window size for .cke_dialog_contents_body
     minWidth: 310,
     minHeight: 280,
@@ -37,7 +37,7 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
             id: 'tab-set-title',
             label: 'Tab Set Title',
             // Validation for empty values.
-            validate: CKEDITOR.dialog.validate.notEmpty("Title field cannot be empty."),
+            validate: CKEDITOR.dialog.validate.notEmpty( editor.lang.bootstrapTabs.invalidTabSetTitle ),
             setup: function( element ) {
               var tabsElement = element,
                   tabSetTitle = element.data( 'tab-set-title' );
@@ -54,7 +54,7 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
             "default": 4,
             items: [ ['2'], ['3'], ['4'], ['5'], ['6'], ['7'], ['8'], ['9'] ],
             // Validation for empty values.
-            validate: CKEDITOR.dialog.validate.notEmpty("Number of Tabs field cannot be empty."),
+            validate: CKEDITOR.dialog.validate.notEmpty( editor.lang.bootstrapTabs.invalidNumberOfTabs ),
             setup: function( element ) {
               var tabsElement = element,
                   oldNumberOfTabs = tabsElement.find( '.nav.nav-tabs li a.tab-link' ).count();

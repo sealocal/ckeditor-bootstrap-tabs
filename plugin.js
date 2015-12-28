@@ -5,10 +5,10 @@
 
 
 CKEDITOR.plugins.add('bootstrapTabs', {
-	lang: ['en'],
-  requires: 'dialog',
-	icons: 'bootstrapTabs',
-	init: function( editor ) {
+    lang: ['en'],
+    requires: 'dialog',
+    icons: 'bootstrapTabs',
+    init: function( editor ) {
 		// Plugin logic goes here...
 
 		// Create the command for the plugin.
