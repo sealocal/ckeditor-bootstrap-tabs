@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
     <title>CKEditor Bootstrap Tabs</title>
+    <!-- CKEditor -->
+		<script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+
   </head>
 
   <body>
@@ -42,6 +45,24 @@
 					<li>Extract the contents to your CKEditor plugins directory: <code>/path/to/ckeditor/plugins/bootstrapTabs</code>.</li>
 					<li>Note: The name of the folder must be <code>bootstrapTabs</code>, not <code>ckeditor-bootstrap-tabs</code>.</li>
 				</ol>
+      </section>
+      <section id="demo" class="inner">
+				<form>
+					<textarea id="ckeditor-bootstrap-tabs-demo" name="ckeditor-bootstrap-tabs-demo" rows="10" cols="80">
+						This is a demo of CKEditor Standard Package v4.5.6 with CKEdiotr Bootstrap Tabs.
+					</textarea>
+					<script>
+						// Replace the <textarea id="ckeditor-bootstrap-tabs-demo"> with a CKEditor
+						// instance, using default configuration.
+						// Enable local "bootstrapTabs" plugin from /ckeditorPlugins/bootstrapTabs/ folder.
+						CKEDITOR.plugins.addExternal( 'bootstrapTabs', '/ckeditorPlugins/bootstrapTabs/', 'plugin.js' );
+
+						// extraPlugins needs to be set too.
+						CKEDITOR.replace( 'ckeditor-bootstrap-tabs-demo', {
+							extraPlugins: 'bootstrapTabs'
+						});
+					</script>
+				</form>
       </section>
     </div>
 
