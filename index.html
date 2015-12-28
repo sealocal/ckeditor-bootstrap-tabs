@@ -66,7 +66,25 @@
 
 						// extraPlugins needs to be set too.
 						CKEDITOR.replace( 'ckeditor-bootstrap-tabs-demo', {
-							extraPlugins: 'bootstrapTabs'
+							extraPlugins: 'bootstrapTabs',
+							contentsCss: [ 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' ]
+						});
+
+						// Add the necessary jQuery and Bootstrap JS source so that tabs are clickable.
+						// If you're already using  Bootstrap JS with your editor instances, then this is not necessary.
+						CKEDITOR.on('instanceReady', function(event) {
+						    var jQueryScriptTag = document.createElement('script');
+						    var bootstrapScriptTag = document.createElement('script');
+
+						    jQueryScriptTag.src = 'https://code.jquery.com/jquery-1.11.3.min.js';
+						    bootstrapScriptTag.src = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
+
+						    var editorHead = event.editor.document.$.head;
+
+						    editorHead.appendChild(jQueryScriptTag);
+				        jQueryScriptTag.onload = function() {
+							    editorHead.appendChild(bootstrapScriptTag);
+				        };
 						});
 					</script>
 				</form>
