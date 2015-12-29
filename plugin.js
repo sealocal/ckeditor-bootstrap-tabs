@@ -5,7 +5,7 @@
 
 
 CKEDITOR.plugins.add('bootstrapTabs', {
-    lang: ['en'],
+    lang: 'en,ru',
     requires: 'dialog',
     icons: 'bootstrapTabs',
     init: function( editor ) {
