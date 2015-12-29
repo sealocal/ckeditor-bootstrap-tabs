@@ -16,7 +16,7 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
       {
         // Definition of the Basic Settings dialog tab.
         id: 'tab-basic',
-        label: 'Basic Settings',
+        label: editor.lang.bootstrapTabs.tabBasicLabel,
 
         // The tab content.
         elements: [
@@ -26,8 +26,7 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
             type: 'html',
             // HTML code to be shown inside the field.
             // http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.ui.dialog.html.html#constructor
-            html: '<p>Add Tabs when activity content can easily be segmented into</p>' +
-                  '<p>separate tabs to allow for more efficient use of space.<p>'
+            html: editor.lang.bootstrapTabs.infoHtml
           },
           {
             // Text input field for the number of tabs.
@@ -35,7 +34,7 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
             // hbox, vbox, labeled, button, checkbox, file, fileButton, html, radio, selectElement, textInput, textarea
             type: 'text',
             id: 'tab-set-title',
-            label: 'Tab Set Title',
+            label: editor.lang.bootstrapTabs.tabSetTitleLabel,
             // Validation for empty values.
             validate: CKEDITOR.dialog.validate.notEmpty( editor.lang.bootstrapTabs.invalidTabSetTitle ),
             setup: function( element ) {
@@ -50,7 +49,7 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
             // hbox, vbox, labeled, button, checkbox, file, fileButton, html, radio, selectElement, textInput, textarea
             type: 'select',
             id: 'number-of-tabs',
-            label: 'Number of Tabs',
+            label: editor.lang.bootstrapTabs.numberOfTabsLabel,
             "default": 4,
             items: [ ['2'], ['3'], ['4'], ['5'], ['6'], ['7'], ['8'], ['9'] ],
             // Validation for empty values.
@@ -70,12 +69,12 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
           {
             type: "select",
             id: "tab-to-remove",
-            label: "Remove a Tab",
-            "default": "Choose a Tab to Remove",
-            items: [ ["Choose a Tab to Remove"] ],
+            label: editor.lang.bootstrapTabs.removeTabLabel,
+            "default": editor.lang.bootstrapTabs.removeTabDefault,
+            items: [ [ editor.lang.bootstrapTabs.removeTabDefault ] ],
             setup: function(element) {
               // clear the array of options (because repeated dialog calls will accumulate options).
-              this.clear().add("Choose a Tab to Remove");
+              this.clear().add( editor.lang.bootstrapTabs.removeTabDefault );
               // iterate over the tabs, adding each tab's link text as an option for select field
               var tabElements = element.findOne( '.nav.nav-tabs').find('li');
               for (i = 0; i < tabElements.count(); i ++) {

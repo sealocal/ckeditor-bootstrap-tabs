@@ -14,12 +14,12 @@ CKEDITOR.plugins.add('bootstrapTabs', {
 		// Create the command for the plugin.
 		editor.addCommand('bootstrapTabs', new CKEDITOR.dialogCommand('bootstrapTabsDialog'));
 
-		// Add the button for the plugin.
-		editor.ui.addButton('BootstrapTabs', {
-			label: 'Insert Tabs',
-			command: 'bootstrapTabs', // The command that was created by addCommand, above.
-			toolbar: 'insert' // Defines the toolbar group. Can also specify an index for ordering: 'insert,30' or 'insert,100', or 'insert,0'.
-		});
+    // Add the button for the plugin.
+    editor.ui.addButton('BootstrapTabs', {
+      label: editor.lang.bootstrapTabs.buttonLabel,
+      command: 'bootstrapTabs', // The command that was created by addCommand, above.
+      toolbar: 'insert' // Defines the toolbar group. Can also specify an index for ordering: 'insert,30' or 'insert,100', or 'insert,0'.
+    });
 
 	  CKEDITOR.dialog.add('bootstrapTabsDialog', this.path + 'dialogs/bootstrapTabs.js');
 
@@ -31,10 +31,10 @@ CKEDITOR.plugins.add('bootstrapTabs', {
 	  // the menu registration should not take place (otherwise an exception is thrown).
 	  // http://docs.ckeditor.com/#!/guide/plugin_sdk_sample_2
 
-		if ( editor.contextMenu ) {
-	    editor.addMenuGroup( 'bootstrapTabsGroup' );
-	    editor.addMenuItem( 'bootstrapTabsItem', {
-        label: 'Edit Tabs',
+    if ( editor.contextMenu ) {
+      editor.addMenuGroup( 'bootstrapTabsGroup' );
+      editor.addMenuItem( 'bootstrapTabsItem', {
+        label: editor.lang.bootstrapTabs.contextMenuLabel,
         icon: this.path + 'icons/bootstrapTabs.png',
         command: 'bootstrapTabs',
         group: 'bootstrapTabsGroup'
