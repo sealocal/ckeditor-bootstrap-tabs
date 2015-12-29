@@ -16,7 +16,7 @@ CKEDITOR.plugins.add('bootstrapTabs', {
 
 		// Add the button for the plugin.
 		editor.ui.addButton('BootstrapTabs', {
-			label: 'Insert Tabs',
+			label: editor.lang.bootstrapTabs.buttonLabel,
 			command: 'bootstrapTabs', // The command that was created by addCommand, above.
 			toolbar: 'insert' // Defines the toolbar group. Can also specify an index for ordering: 'insert,30' or 'insert,100', or 'insert,0'.
 		});
@@ -34,7 +34,7 @@ CKEDITOR.plugins.add('bootstrapTabs', {
 		if ( editor.contextMenu ) {
 	    editor.addMenuGroup( 'bootstrapTabsGroup' );
 	    editor.addMenuItem( 'bootstrapTabsItem', {
-        label: 'Edit Tabs',
+        label: editor.lang.bootstrapTabs.contextMenuLabel,
         icon: this.path + 'icons/bootstrapTabs.png',
         command: 'bootstrapTabs',
         group: 'bootstrapTabsGroup'
