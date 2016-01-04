@@ -1,6 +1,8 @@
 # ckeditor-bootstrap-tabs
 A plugin for CKEditor that allows for the user to insert and edit a specified number of Bootstrap tabs.
 
+![ckeditor-bootstrap-tabs screenshot](https://raw.githubusercontent.com/sealocal/ckeditor-bootstrap-tabs/gh-pages/images/ckeditor-bootstrap-tabs-screenshot.png)
+
 ## Demo
 Check out the demo at https://sealocal.github.io/ckeditor-bootstrap-tabs
 
