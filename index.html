@@ -7,6 +7,7 @@
     <meta name="description" content="CKEditor Bootstrap Tabs : A plugin for CKEditor that allows for the user to insert and edit a specified number of Bootstrap tabs.">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/demo.css">
 
     <title>CKEditor Bootstrap Tabs</title>
     <!-- CKEditor -->
@@ -54,7 +55,8 @@
         </ol>
       </section>
       <section id="demo" class="inner">
-				<form>
+				<!-- Classic Editing -->
+        <form>
 					<textarea id="ckeditor-bootstrap-tabs-demo" name="ckeditor-bootstrap-tabs-demo" rows="10" cols="80">
 						This is a demo of CKEditor Standard Package v4.5.6 with CKEdiotr Bootstrap Tabs.
 
@@ -89,7 +91,32 @@
 				        };
 						});
 					</script>
-				</form>
+
+          <!-- Add some space between examples. -->
+          <br><br><br><br>
+
+          <!-- Inline Editing with automatic editor creation. -->
+          <div id="demo-inline-auto" contenteditable="true">
+            <h1>Inline Editing in Action!</h1>
+            <p>
+              Click here to edit text with inline editor.
+
+              Styling inside an inline editor is dependent upon the stylesheets that are loaded for the containing page.  In this example, the styling on the page currently restricts the Bootrap Tabs to a usable max of 3 tabs. 
+            </p>
+          </div>
+          <!-- For inline editing, the containing page must have loaded jQuery, Bootrap CSS, and Bootstrap JS. -->
+          <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+          <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous">
+          </script>
+          <script>
+            CKEDITOR.inline( 'demo-inline-auto', {
+              extraPlugins: 'bootstrapTabs'
+            });
+          </script>
+
+        </form>
+
       </section>
     </div>
 
