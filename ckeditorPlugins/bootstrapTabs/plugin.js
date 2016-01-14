@@ -12,7 +12,9 @@ CKEDITOR.plugins.add('bootstrapTabs', {
 		// Plugin logic goes here...
 
 		// Create the command for the plugin.
-		editor.addCommand('bootstrapTabs', new CKEDITOR.dialogCommand('bootstrapTabsDialog'));
+		editor.addCommand('bootstrapTabs', new CKEDITOR.dialogCommand('bootstrapTabsDialog', {
+      allowedContent: 'div ul li a[role,href,id,aria-*,data-number-of-tabs,data-tab-set-title](bootstrap-tabs,nav,nav-tabs,active,tab-content,tab-pane,tab-pane-content)'
+    }));
 
 		// Add the button for the plugin.
 		editor.ui.addButton('BootstrapTabs', {
