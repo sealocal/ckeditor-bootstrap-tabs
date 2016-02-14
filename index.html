@@ -93,6 +93,9 @@
             // Add the necessary jQuery and Bootstrap JS source so that tabs are clickable.
             // If you're already using Bootstrap JS with your editor instances, then this is not necessary.
             function loadBootstrap(event) {
+                if (event.name == 'mode' && event.editor.mode == 'source')
+                    return; // Skip loading jQuery and Bootstrap when switching to source mode.
+
                 var jQueryScriptTag = document.createElement('script');
                 var bootstrapScriptTag = document.createElement('script');
 
