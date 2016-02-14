@@ -63,10 +63,22 @@
             Here, you can try out the plugin by clicking its icon.  The icon is the one that looks like a tabbed folder - it's next to last on the top row of the toolbar.
           </textarea>
           <script>
+            function fileFound(url) {
+                var http = new XMLHttpRequest();
+                http.open('HEAD', url, false);
+                http.send();
+                return http.status != 404;
+            }
+
+            var filePath, ghPagesPath, bbPagesPath;
+            ghPagesPath = '/ckeditor-bootstrap-tabs/ckeditorPlugins/bootstrapTabs/';
+            bbPagesPath = '/ckeditorPlugins/bootstrapTabs/';
+            filePath = fileFound(ghPagesPath + 'plugin.js') ? ghPagesPath : bbPagesPath;
+
             // Replace the <textarea id="ckeditor-bootstrap-tabs-demo"> with a CKEditor
             // instance, using default configuration.
             // Enable local "bootstrapTabs" plugin from /ckeditorPlugins/bootstrapTabs/ folder.
-            CKEDITOR.plugins.addExternal( 'bootstrapTabs', '/ckeditor-bootstrap-tabs/ckeditorPlugins/bootstrapTabs/', 'plugin.js' );
+            CKEDITOR.plugins.addExternal( 'bootstrapTabs', filePath, 'plugin.js' );
 
             // extraPlugins needs to be set too.
             CKEDITOR.replace( 'ckeditor-bootstrap-tabs-demo', {
