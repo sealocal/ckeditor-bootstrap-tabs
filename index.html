@@ -11,7 +11,7 @@
 
     <title>CKEditor Bootstrap Tabs</title>
     <!-- CKEditor -->
-		<script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
 
   </head>
 
@@ -36,50 +36,50 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h2>
-					<a id="installation" class="anchor" href="#installation" aria-hidden="true">
-						<span class="octicon octicon-link"></span>
-					</a>Installation
-				</h2>
+          <a id="installation" class="anchor" href="#installation" aria-hidden="true">
+            <span class="octicon octicon-link"></span>
+          </a>Installation
+        </h2>
 
-				<ol>
-					<li>
-						Download the zip file.
-					</li>
-					<li>
-						Extract the contents to your CKEditor plugins directory: <code>/path/to/ckeditor/plugins/bootstrapTabs</code>.
-					</li>
-				  Note: The name of the folder must be <code>bootstrapTabs</code>, not <code>ckeditor-bootstrap-tabs</code>.
+        <ol>
+          <li>
+            Download the zip file.
+          </li>
+          <li>
+            Extract the contents to your CKEditor plugins directory: <code>/path/to/ckeditor/plugins/bootstrapTabs</code>.
+          </li>
+          Note: The name of the folder must be <code>bootstrapTabs</code>, not <code>ckeditor-bootstrap-tabs</code>.
           <li>
             Include Bootstrap CSS, Bootstrap JS, and the jQuery JS dependency for your CKEditor. See source code of this page for an example of inlcuding CSS and JS on <code>instanceReady</code>.
           </li>
         </ol>
       </section>
       <section id="demo" class="inner">
-				<!-- Classic Editing -->
+        <!-- Classic Editing -->
         <form>
-					<textarea id="ckeditor-bootstrap-tabs-demo" name="ckeditor-bootstrap-tabs-demo" rows="10" cols="80">
-						This is a demo of CKEditor Standard Package v4.5.6 with CKEdiotr Bootstrap Tabs.
+          <textarea id="ckeditor-bootstrap-tabs-demo" name="ckeditor-bootstrap-tabs-demo" rows="10" cols="80">
+            This is a demo of CKEditor Standard Package v4.5.6 with CKEdiotr Bootstrap Tabs.
 
             Here, you can try out the plugin by clicking its icon.  The icon is the one that looks like a tabbed folder - it's next to last on the top row of the toolbar.
-					</textarea>
-					<script>
-						// Replace the <textarea id="ckeditor-bootstrap-tabs-demo"> with a CKEditor
-						// instance, using default configuration.
-						// Enable local "bootstrapTabs" plugin from /ckeditorPlugins/bootstrapTabs/ folder.
-						CKEDITOR.plugins.addExternal( 'bootstrapTabs', '/ckeditor-bootstrap-tabs/ckeditorPlugins/bootstrapTabs/', 'plugin.js' );
+          </textarea>
+          <script>
+            // Replace the <textarea id="ckeditor-bootstrap-tabs-demo"> with a CKEditor
+            // instance, using default configuration.
+            // Enable local "bootstrapTabs" plugin from /ckeditorPlugins/bootstrapTabs/ folder.
+            CKEDITOR.plugins.addExternal( 'bootstrapTabs', '/ckeditor-bootstrap-tabs/ckeditorPlugins/bootstrapTabs/', 'plugin.js' );
 
-						// extraPlugins needs to be set too.
-						CKEDITOR.replace( 'ckeditor-bootstrap-tabs-demo', {
-							extraPlugins: 'bootstrapTabs',
-							contentsCss: [ 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' ],
+            // extraPlugins needs to be set too.
+            CKEDITOR.replace( 'ckeditor-bootstrap-tabs-demo', {
+              extraPlugins: 'bootstrapTabs',
+              contentsCss: [ 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' ],
               on: {
                 instanceReady: loadBootstrap,
                 mode: loadBootstrap
               }
-						});
+            });
 
-						// Add the necessary jQuery and Bootstrap JS source so that tabs are clickable.
-						// If you're already using Bootstrap JS with your editor instances, then this is not necessary.
+            // Add the necessary jQuery and Bootstrap JS source so that tabs are clickable.
+            // If you're already using Bootstrap JS with your editor instances, then this is not necessary.
             function loadBootstrap(event) {
                 var jQueryScriptTag = document.createElement('script');
                 var bootstrapScriptTag = document.createElement('script');
@@ -94,7 +94,7 @@
                   editorHead.appendChild(bootstrapScriptTag);
                 };
             }
-					</script>
+          </script>
 
           <!-- Add some space between examples. -->
           <br><br><br><br>
@@ -132,16 +132,16 @@
       </footer>
     </div>
 
-		<script type="text/javascript">
-		  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-		  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-		<script type="text/javascript">
-		  try {
-		    var pageTracker = _gat._getTracker("UA-62806367-2");
-		  pageTracker._trackPageview();
-		  } catch(err) {}
-		</script>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-62806367-2");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
 
   </body>
 </html>
