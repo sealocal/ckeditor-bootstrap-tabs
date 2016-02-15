@@ -7,7 +7,7 @@
     <meta name="description" content="CKEditor Bootstrap Tabs : A plugin for CKEditor that allows for the user to insert and edit a specified number of Bootstrap tabs.">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/demo.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/ckeditor-bootstrap-tabs.css">
 
     <title>CKEditor Bootstrap Tabs</title>
     <!-- CKEditor -->
@@ -49,11 +49,55 @@
             Extract the contents to your CKEditor plugins directory: <code>/path/to/ckeditor/plugins/bootstrapTabs</code>.
           </li>
           <li>
-            Include Bootstrap CSS, Bootstrap JS, and the jQuery JS dependency for your CKEditor. See source code of this page for an example of inlcuding CSS and JS on <code>instanceReady</code>.
+            Include Bootstrap CSS, Bootstrap JS, and the jQuery JS dependency for your CKEditor.
+
+            <pre id="installation-code">
+              <code>
+// Enable local "bootstrapTabs" plugin from /ckeditorPlugins/bootstrapTabs/ folder.
+CKEDITOR.plugins.addExternal( 'bootstrapTabs', '/ckeditorPlugins/bootstrapTabs/', 'plugin.js' );
+
+// Replace the &lt;textarea id="ckeditor-bootstrap-tabs-demo"&gt; with a CKEditor
+// instance, using default configuration.
+// extraPlugins needs to be set too.
+CKEDITOR.replace( 'ckeditor-bootstrap-tabs-demo', {
+  extraPlugins: 'bootstrapTabs',
+  contentsCss: [ 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' ],
+  on: {
+    instanceReady: loadBootstrap,
+    mode: loadBootstrap
+  }
+});
+
+// Add the necessary jQuery and Bootstrap JS source so that tabs are clickable.
+// If you're already using Bootstrap JS with your editor instances, then this is not necessary.
+function loadBootstrap(event) {
+    if (event.name == 'mode' && event.editor.mode == 'source')
+        return; // Skip loading jQuery and Bootstrap when switching to source mode.
+
+    var jQueryScriptTag = document.createElement('script');
+    var bootstrapScriptTag = document.createElement('script');
+
+    jQueryScriptTag.src = 'https://code.jquery.com/jquery-1.11.3.min.js';
+    bootstrapScriptTag.src = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
+
+    var editorHead = event.editor.document.$.head;
+
+    editorHead.appendChild(jQueryScriptTag);
+    jQueryScriptTag.onload = function() {
+      editorHead.appendChild(bootstrapScriptTag);
+    };
+}
+              </code>
+            </pre>
           </li>
         </ol>
       </section>
-      <section id="demo" class="inner">
+      <section class="inner">
+        <h2>
+          <a id="demo" class="anchor" href="#demo" aria-hidden="true">
+            <span class="octicon octicon-link"></span>
+          </a>Demo
+        </h2>
         <!-- Classic Editing -->
         <form>
           <textarea id="ckeditor-bootstrap-tabs-demo" name="ckeditor-bootstrap-tabs-demo" rows="10" cols="80">
@@ -74,11 +118,11 @@
             bbPagesPath = '/ckeditorPlugins/bootstrapTabs/';
             filePath = fileFound(ghPagesPath + 'plugin.js') ? ghPagesPath : bbPagesPath;
 
-            // Replace the <textarea id="ckeditor-bootstrap-tabs-demo"> with a CKEditor
-            // instance, using default configuration.
             // Enable local "bootstrapTabs" plugin from /ckeditorPlugins/bootstrapTabs/ folder.
             CKEDITOR.plugins.addExternal( 'bootstrapTabs', filePath, 'plugin.js' );
 
+            // Replace the <textarea id="ckeditor-bootstrap-tabs-demo"> with a CKEditor
+            // instance, using default configuration.
             // extraPlugins needs to be set too.
             CKEDITOR.replace( 'ckeditor-bootstrap-tabs-demo', {
               extraPlugins: 'bootstrapTabs',
