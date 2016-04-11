@@ -198,6 +198,38 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
 
       // Set the (new) title on the tabsElement containing div.
       tabsElement.data( 'tab-set-title', tabSetTitle);
+      // Every tab-link maps to a tab-pane and they are linked by the tab-link href and the tab-pane id.
+      // So, we can enusre that tab-panes always have a corresponding tab-link and we can keep these uniquely
+      // paired as long as the user keeps each tab's name unique.
+      var allTabLinks = tabsElement.find( '.nav.nav-tabs li a.tab-link' );
+      for ( var i = 0; i < allTabLinks.count(); i++ ) {
+        var tabLink = allTabLinks.getItem(i);
+
+        // Store the old tabIdentifier so we can look up the tab-pane by id
+        var oldTabIdentifier = tabLink.getAttribute('href'); // tab link should have an href
+        if ( !oldTabIdentifier ) // if it does not have an href
+          oldTabIdentifier = tabLink.getAttribute('data-target'); // then it should have a data-target
+
+        // Generate the new tabIdentifier as we do for a brand new tab
+        var tabName       = tabLink.getText();
+        var tabIdentifier = generateTabIdentifer(tabSetTitle, tabName);
+
+        // Look up the tab-pane by id ( oldTabIdentifier should already include the '#' notation for querying an id)
+        var tabPane       = tabsElement.findOne( oldTabIdentifier );
+
+        if ( tabPane )
+          tabPane.setAttribute('id', tabIdentifier);
+
+        // Set the unique pair of href and id on the tab-link and tab-pane element
+        tabLink
+          .setAttributes({
+            'href': '#' + tabIdentifier,
+            'aria-controls': tabIdentifier
+          });
+        // No need to keep data-targets
+        tabLink
+          .removeAttribute('data-target');
+      };
 
     } // end onOK
   }; // return dialog definition object
@@ -207,13 +239,10 @@ CKEDITOR.dialog.add( 'bootstrapTabsDialog', function( editor ) {
 function appendTabToElement(editor, dialog, tabsElement, numberOfTabs, i) {
 
   // Get the new tab-set-title from the dialog input.
-  var tabSetTitle       = dialog.getValueOf( 'tab-basic', 'tab-set-title' );
-
+  var tabSetTitle   = dialog.getValueOf( 'tab-basic', 'tab-set-title' );
   // Text for the tab name and dynamically assigned attributes for the tab and tab-panels
-  var tabName = 'Tab ' + i,
-      // prepend the tab tabSetTitle for tab id uniqueness and replace non-alpha-numeric and whitespace with a dash
-      // 'TeSt Title StRing !! .* !@# $$ %^&  () __-- += with non-alpha-num'.replace(/(\W+|\s+|_|-+)/g, '-').replace(/-+/g, '-')
-      tabIdentifier = (tabSetTitle + ' ' + tabName).replace(/(\W+|\s+|_|-+)/g, '-').replace(/-+/g, '-').toLowerCase();
+  var tabName       = 'Tab ' + i;
+  var tabIdentifier = generateTabIdentifer(tabSetTitle, tabName);
 
   // This div template contains the content that a user will edit.
   // Without this extra div inide the tab-pane, editing the tab contents produces unexpected results.
@@ -240,5 +269,11 @@ function appendTabToElement(editor, dialog, tabsElement, numberOfTabs, i) {
   navTabsElement.append( tabElement );
   // Append number-of-tabs tab-panels (the area where content is displayed in Bootstrap tabs)
   tabContentElement.append( tabPanelElement );
+}
+
+function generateTabIdentifer(tabSetTitle, tabName) {
+    // prepend the tab tabSetTitle for tab id uniqueness and replace non-alpha-numeric and whitespace with a dash
+    // 'TeSt Title StRing !! .* !@# $$ %^&  () __-- += with non-alpha-num'.replace(/(\W+|\s+|_|-+)/g, '-').replace(/-+/g, '-')
+    return (tabSetTitle + ' ' + tabName).replace(/(\W+|\s+|_|-+)/g, '-').replace(/-+/g, '-').toLowerCase();
 }
 
